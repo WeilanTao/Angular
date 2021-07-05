@@ -1,0 +1,10 @@
+.glyphicon{
+    color:#ccc;
+    cursor: poiniter;
+}
+
+.highlighted{
+    color:rgb(196, 37, 64);
+    cursor: grab;
+}
+
