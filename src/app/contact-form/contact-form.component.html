@@ -1,0 +1,75 @@
+<form #f="ngForm" (ngSubmit)="submit(f)"> <!--f is a template variable we created to get a refernce of the ngForm deriective
+                                            the event ngSubmit is binded to the method submit()-->
+    
+    <div ngModelGroup="contact" #contact="ngModelGroup">
+        <div class="form-group">
+            <label for="firstName">FirstName</label><br/>
+            <!-- ngModel: Creates a FormControl instance from a domain model and binds it to a form control element; Make angular to create a control object and associate it with the input field under the hood -->
+            <!-- #firstName indicates firstName as a template variable-->
+            <input 
+                required 
+                minlength="3" 
+                maxlength="10" 
+                ngModel name="firstName" 
+                pattern="banana" 
+                #firstName="ngModel" 
+                (change)="log(firstName)" 
+                id="firstName" 
+                type="text" 
+                class="form-control">
+            <div 
+                class="alert alert-danger" 
+                *ngIf="firstName.touched && !firstName.valid">
+                <div *ngIf="firstName.errors?.required">
+                    First name is required.
+                </div>
+                <div *ngIf="firstName.errors?.minlength">
+                    First name should be minimum {{firstName.errors?.minlength.requiredLength}} characters.
+                </div>
+                <div *ngIf="firstName.errors?.pattern">
+                    First name doesn't match the pattern.
+                </div>
+    
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="form-group">
+        <label for="comment">Comment</label><br/>
+        <textarea ngModel name="comment" id="comment" cols="30" rows="10" class="form-control"></textarea>
+    </div>
+
+    <!-- check box -->
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" ngModel name="isSubscribed"> Subscribe to mailing list
+        </label>
+    </div>
+
+    <!-- dropdown list -->
+    <div class="form-group">
+        <label for="contactMethod">Contact Method</label>
+        <select multiple ngModel name="contactMethod" id="contactMethod" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let method of contactMethods" [ngValue]="method.id">{{method.name}}</option>
+        </select>
+    </div>
+
+
+    <!-- radio button -->
+    <div *ngFor="let method of contactMethods" class="radio">
+        <label>
+            <input ngModel type="radio" name= "contactMethod" [value]="method.id">
+            {{method.name}}
+        </label>
+    </div>
+   
+  
+    <p>
+        {{f.value | json}}
+    </p>
+
+    <button  [disabled]="!f.valid">Submit</button>
+
+</form>

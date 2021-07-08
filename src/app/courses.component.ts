@@ -12,8 +12,10 @@ import { CoursesService } from './courses.service';
     <div>
         <span 
         class="glyphicon"  
-        [class.glyphicon-star]="isLiked"
-        [class.glyphicon-star-empty]="!isLiked"
+        [ngClass]="{
+            'glyphicon-star':isLiked,
+            'glyphicon-star-empty':!isLiked
+        }"
         style="font-size: 100px" 
         (click)="onClick()"
         ></span>
