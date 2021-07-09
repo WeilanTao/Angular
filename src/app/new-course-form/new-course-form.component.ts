@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Directive practice
+ */
 @Component({
   selector: 'new-course-form',
   templateUrl: './new-course-form.component.html',

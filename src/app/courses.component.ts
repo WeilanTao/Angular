@@ -22,6 +22,7 @@ import { CoursesService } from './courses.service';
 
     </div>
 
+    <!--ngModel binds the input to the titleCase variable-->
     <div>
         <input [(ngModel)]="titleCase" /><br/>
         {{titleCase | titlecase | title_case }}<br/>
