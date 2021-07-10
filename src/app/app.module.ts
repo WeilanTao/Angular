@@ -1,9 +1,11 @@
+import { AppErrorHandler } from './common/app-error-handler';
+import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { Title_Case } from './title_case.pipe';
 import { SummaryPipe } from './summary.pipe';
 import { CoursesService } from './courses.service';
 import { CoursesComponent } from './courses.component';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +19,10 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
 import { NewCourseFormarrayComponent } from './new-course-formarray/new-course-formarray.component';
 import { FormbuildersampleComponent } from './formbuildersample/formbuildersample.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-
+import { PostComponent } from './post/post.component';
+import {HttpClientModule } from '@angular/common/http';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { GithubFollowersService } from './services/github-followers.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,16 +38,22 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     SignupFormComponent,
     NewCourseFormarrayComponent,
     FormbuildersampleComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    PostComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    CoursesService
+    CoursesService,
+    PostService,
+    {provide:ErrorHandler,useClass:AppErrorHandler},
+    GithubFollowersService
   ],
   bootstrap: [AppComponent]
 })

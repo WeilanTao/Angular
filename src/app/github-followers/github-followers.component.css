@@ -1,0 +1,10 @@
+.avatar{
+    width:64px;
+    height:64px;
+    border-radius: 100%;
+
+}
+
+.wrapper{
+    display: inline-flex;
+}
