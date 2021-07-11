@@ -5,7 +5,9 @@
     <div class="wrapper">
         <img class="avatar align-self-start mr-3" src="{{follower.avatar_url}}" alt="Generic placeholder image">
         <div class="media-body">
-        <h5 class="mt-0">{{follower.login}}</h5>
+        <h5 class="mt-0" >
+            <a [routerLink]="['/followers',follower.id,follower.login]">{{follower.login}}</a>
+        </h5>
         <a href="follower.url">{{follower.url}}</a>
         </div>
     </div>

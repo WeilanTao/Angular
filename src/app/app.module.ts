@@ -1,3 +1,4 @@
+import { NotFoundError } from './common/not-found-error';
 import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
@@ -5,7 +6,7 @@ import { Title_Case } from './title_case.pipe';
 import { SummaryPipe } from './summary.pipe';
 import { CoursesService } from './courses.service';
 import { CoursesComponent } from './courses.component';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,12 @@ import { PostComponent } from './post/post.component';
 import {HttpClientModule } from '@angular/common/http';
 import { GithubFollowersComponent } from './github-followers/github-followers.component';
 import { GithubFollowersService } from './services/github-followers.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HomeComponent } from './home/home.component';
+import { GitHubProfileComponent } from './git-hub-profile/git-hub-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,14 +47,39 @@ import { GithubFollowersService } from './services/github-followers.service';
     FormbuildersampleComponent,
     ChangePasswordComponent,
     PostComponent,
-    GithubFollowersComponent
+    GithubFollowersComponent,
+    NavBarComponent,
+    HomeComponent,
+    GitHubProfileComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path:'', 
+        component:HomeComponent
+      },
+      {
+        path:'followers', 
+        component:GithubFollowersComponent
+      },
+      {
+        path:'followers/:userid/:username', 
+        component:GitHubProfileComponent
+      },
+      {
+        path:'posts', 
+        component:PostComponent
+      },
+      {
+        path:'**', 
+        component:NotFoundComponent
+      }
+    ])
   ],
   providers: [
     CoursesService,

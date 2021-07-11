@@ -1,3 +1,20 @@
+<nav-bar></nav-bar>
+
+<router-outlet>
+    
+</router-outlet>
+
+
+<div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <p>==========================================Below is Angular Basic==========================================</p>
+</div>
+
 <h1>Angular</h1>
 <courses [is-liked]="post.isLiked" (change)="onFavoriteChanged($event)"></courses>
 <bootstrap-panel >
@@ -13,7 +30,7 @@
 <like 
     [likesCount]="tweet.likesCount"  
     [isActive]="tweet.isLiked"
-    ><!--property binding-->
+    >  <!--property binding-->
     
 </like>
 
@@ -39,14 +56,15 @@
 
 <!-- ngSwitch -->
 <ul class="nav nav-pills">
-    <li [class.active]="viewMode=='map'"><a (click)="viewMode='map'">Map View</a></li> <!--set the map as active when viewModeis set as 'map'; when this is clicked, viewMode will be set as 'map'-->
+    <li [class.active]="viewMode=='map'"><a (click)="viewMode='map'">Map View</a></li> 
+    <!--set the map as active when viewModeis set as 'map'; when this is clicked, viewMode will be set as 'map'-->
     <li [class.active]="viewMode=='list'"><a (click)="viewMode='list'">List View</a></li>
 </ul>
 <div [ngSwitch]="viewMode">
     <div *ngSwitchCase="'map'">Map View Content</div>
     <div *ngSwitchCase="'list'">List View Content</div>
     <div *ngSwitchDefault>Otherwise</div>
-</div>
+</div> 
 
 
 <!-- ngFor -->
@@ -72,9 +90,10 @@
 </button>
 
 
-<!-- Safe Traveral Operator -->
+ <!-- Safe Traveral Operator -->
 <span *ngIf="task.assignee">{{task.assignee.name}}</span>
-<span>{{task.assignee?.name}}</span> <!--If the task.assignee is a null or underfined, angular is going to ignore this; otherwise it's going to render the name property of the assignee on the screen-->
+<span>{{task.assignee?.name}}</span> 
+<!--If the task.assignee is a null or underfined, angular is going to ignore this; otherwise it's going to render the name property of the assignee on the screen-->
 
 <input type="text" [appInputFormat]="'uppercase'"> 
 
@@ -102,7 +121,6 @@
 
 <change-password></change-password>
 
-<post></post>
 
 
-<github-followers></github-followers>
+
